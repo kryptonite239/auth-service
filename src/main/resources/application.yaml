@@ -1,0 +1,34 @@
+spring:
+  application:
+    name: auth-service
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/authdb
+    username: auth
+    password: authpass
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update   # fine for dev; switch to 'validate' + Flyway later
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+  data:
+    redis:
+      host: localhost
+      port: 6379
+
+server:
+  port: 8080
+
+jwt:
+  secret: aHVudHN0cmFuZ2VwYW5ob3BlY2hpZWZiYXJlc3VuYWxzb2hpZ2hsZXR0ZWFtcm91Z2g=
+  access-token-expiration-ms: 900000      # 15 min
+  refresh-token-expiration-ms: 604800000  # 7 days
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
