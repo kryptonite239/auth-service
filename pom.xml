@@ -28,6 +28,7 @@
 	</scm>
 	<properties>
 		<java.version>21</java.version>
+		<app.timezone>Asia/Kolkata</app.timezone>
 	</properties>
 	<dependencies>
 			<!-- JWT -->
@@ -63,14 +64,17 @@
 		</dependency>
 
 		<!-- Testing (add now, use later) -->
+		<!-- Source: https://mvnrepository.com/artifact/org.testcontainers/postgresql -->
 		<dependency>
 			<groupId>org.testcontainers</groupId>
 			<artifactId>postgresql</artifactId>
+			<version>1.21.4</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.testcontainers</groupId>
 			<artifactId>junit-jupiter</artifactId>
+			<version>1.21.4</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
@@ -136,6 +140,9 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+                <jvmArguments>-Duser.timezone=${app.timezone}</jvmArguments>
+            </configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
